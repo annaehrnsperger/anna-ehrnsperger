@@ -1,0 +1,52 @@
+{
+  "name": "gatsbysanitytheme",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Anna Ehrnsperger <hallo@annaehrnsperger.de>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ]
+  },
+  "dependencies": {
+    "@sanity/base": "^2.1.4",
+    "@sanity/color-input": "^2.1.4",
+    "@sanity/components": "^2.1.4",
+    "@sanity/core": "^2.1.4",
+    "@sanity/default-layout": "^2.1.4",
+    "@sanity/default-login": "^2.1.4",
+    "@sanity/desk-tool": "^2.1.4",
+    "@sanity/vision": "^2.1.4",
+    "prop-types": "^15.6",
+    "react": "^16.2",
+    "react-dom": "^16.2",
+    "react-icons": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "prettier": "^2.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:annaehrnsperger/generic-gatsby-sanity-theme.git"
+  }
+}
