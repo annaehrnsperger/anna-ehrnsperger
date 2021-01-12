@@ -9,7 +9,6 @@ import blogPost from './documents/blogPost';
 import homepage from './documents/homepage';
 import legalNotice from './documents/legalNotice';
 import project from './documents/project';
-import projectsPage from './documents/projectsPage';
 import settings from './documents/settings';
 
 // object schemas
@@ -27,7 +26,6 @@ export default createSchema({
     homepage,
     legalNotice,
     project,
-    projectsPage,
     settings,
 
     // objects

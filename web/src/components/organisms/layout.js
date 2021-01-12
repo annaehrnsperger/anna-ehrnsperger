@@ -47,19 +47,23 @@ const Layout = ({ children, location }) => {
       {/**
        * Content
        */}
-      <AnimatePresence exitBeforeEnter initial={false}>
-        <Header />
-        <motion.main
-          key={location && `key${location.pathname}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: ease.outSmooth }}
-        >
-          {children}
-        </motion.main>
-        <Footer />
-      </AnimatePresence>
+      {/* <AnimatePresence
+        exitBeforeEnter
+        //  initial={false}
+      > */}
+      <Header />
+      <motion.main
+        className="dark"
+        // key={location && `key${location.pathname}`}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        // transition={{ duration: 0.4, ease: ease.outSmooth }}
+      >
+        {children}
+      </motion.main>
+      {/* <Footer /> */}
+      {/* </AnimatePresence> */}
     </LayoutProvider>
   );
 };

@@ -9,18 +9,14 @@ export default {
       title: 'Title',
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 200,
-      },
+      name: 'url',
+      type: 'string',
+      title: 'URL',
     },
     {
       title: 'Description',
       name: 'description',
-      type: 'text',
+      type: 'portableText',
     },
     {
       name: 'images',

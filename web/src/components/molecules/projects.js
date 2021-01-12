@@ -5,16 +5,15 @@ import { motion } from 'framer-motion';
 import Nav from '../atoms/nav';
 import { ease } from '../../utils/easing';
 import { media } from '../../utils/media-queries';
-import Marker from '../atoms/marker';
+import Project from '../atoms/project';
+import WeeklyAlbum from '../atoms/weeklyAlbum';
 
-const Header = () => (
-  <StyledHeader className="dark spacing-inner">
-    <Nav />
-    <h1 className="big">
-      <Marker text="Anna Ehrnsperger" duration={2} delay={0.3} />
-      <br />
-      <Marker text="Design Code" duration={2} delay={1.2} />
-    </h1>
+const Projects = () => (
+  <StyledProjects className="dark spacing-inner">
+    <Project title="Kwera" />
+    <Project title="Manuel Lorenz" />
+    <Project title="KR8 Bureau" />
+    <WeeklyAlbum />
     {/* <div className="grid small">
       <p className="contact">
         <p>E-Mail</p>
@@ -27,26 +26,11 @@ const Header = () => (
         cutting-edge technology.
       </p>
     </div> */}
-  </StyledHeader>
+    {/* <Nav /> */}
+  </StyledProjects>
 );
 
-const StyledHeader = styled.header`
-  height: 88vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  h1 {
-    padding-bottom: var(--v-spacing-L);
-
-    span {
-      display: inline-block;
-      background: var(--white);
-      color: var(--black);
-      white-space: nowrap;
-    }
-  }
-
+const StyledProjects = styled.section`
   @media ${media.M} {
     .grid {
       padding-bottom: var(--spacing-S);
@@ -62,4 +46,4 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default Header;
+export default Projects;

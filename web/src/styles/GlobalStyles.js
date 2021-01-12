@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import SuisseRegular from '../static/fonts/SuisseIntl-Regular-WebM.woff2';
-import SuisseMono from '../static/fonts/SuisseIntlMono-Regular-WebS.woff2';
+import SuisseLight from '../assets/fonts/SuisseIntl-Light-WebS.woff2';
+import SuisseRegular from '../assets/fonts/SuisseIntl-Regular-WebM.woff2';
+import SuisseMono from '../assets/fonts/SuisseIntlMono-Regular-WebS.woff2';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -9,14 +10,24 @@ const GlobalStyles = createGlobalStyle`
     color: var(--text-color);
     background: var(--bg-color);
     font-size: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   body {
     font-size: var(--fontsize-1);
-    line-height: var(--line-height);
   }
 
   /* Typography */
+
+  @font-face {
+    font-family: 'Suisse Light';
+    src: url(${SuisseLight});
+  }
 
   @font-face {
     font-family: 'Suisse Regular';
@@ -28,23 +39,24 @@ const GlobalStyles = createGlobalStyle`
     src: url(${SuisseMono});
   }
 
+  .big {
+    letter-spacing: var(--letter-spacing);
+    line-height: 1.1;
+  }
+
+  .small {
+    font-family: var(--font-3);
+    font-size: var(--fontsize-2);
+    line-height: 1.25;
+    letter-spacing: 0.1px;
+  }
+
   /* Images */
 
   .gatsby-image-wrapper {
     object-fit: cover;
     max-width: 100%;
     height: 100%;
-  }
-
-  /* Scrollbar */
-
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   /* Spacing */
@@ -54,7 +66,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .spacing-inner {
-    padding: var(--v-spacing-S);
+    padding: var(--v-spacing-M);
   }
 
   .spacing-removed {
@@ -68,6 +80,10 @@ const GlobalStyles = createGlobalStyle`
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     gap: var(--spacing-XS);
+
+    * {
+      grid-column: 1 / calc(var(--grid-cols) + 1);
+    }
   }
 
   .dark {

@@ -22,24 +22,7 @@ export default () =>
       S.listItem()
         .title('Work')
         .icon(FiCircle)
-        .child(
-          S.list()
-            .title('Work')
-            .items([
-              S.listItem()
-                .title('Page')
-                .icon(FiSidebar)
-                .child(
-                  S.editor()
-                    .schemaType('projectsPage')
-                    .documentId('projectsPage')
-                ),
-              S.listItem()
-                .title('Projects')
-                .icon(FiSquare)
-                .child(S.documentTypeList('project').title('Projects')),
-            ])
-        ),
+        .child(S.documentTypeList('project').title('Project')),
       S.listItem()
         .title('Blog')
         .icon(FiMessageCircle)

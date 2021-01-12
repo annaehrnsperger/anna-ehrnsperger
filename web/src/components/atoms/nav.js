@@ -24,16 +24,13 @@ const Nav = () => {
   `);
 
   return (
-    <StyledNav className="dark">
-      <ul>
+    <StyledNav>
+      <ul className="small spacing-inner">
         <li>
-          <Link to="/">{projectsPage.nodes[0].title}</Link>
+          <Link to="/">Stories</Link>
         </li>
         <li>
-          <Link to="/">{aboutPage.nodes[0].title}</Link>
-        </li>
-        <li>
-          <Link to="/">{legalNotice.nodes[0].title}</Link>
+          <Link to="/">Contact</Link>
         </li>
       </ul>
     </StyledNav>
@@ -41,7 +38,11 @@ const Nav = () => {
 };
 
 const StyledNav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  padding-top: 2px;
 
   ul {
     display: flex;

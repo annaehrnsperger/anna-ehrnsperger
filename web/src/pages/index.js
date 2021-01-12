@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { useConsole } from '../hooks/useConsole';
 import SEO from '../components/organisms/seo';
 import RichText from '../components/atoms/richtext';
+import Projects from '../components/molecules/projects';
 
 const IndexPage = ({ data }) => {
   useConsole();
@@ -13,8 +14,7 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEO />
-      <h1>{title}</h1>
-      <RichText blocks={_rawDescription} />
+      <Projects />
     </>
   );
 };
