@@ -12,7 +12,7 @@ const WeeklyAlbum = () => {
           Authorization: `Basic ${btoa(
             `${process.env.GATSBY_SPOTIFY_CLIENT_ID}:${process.env.GATSBY_SPOTIFY_SECRET}`
           )}`,
-          body: 'grant_type=client_credentials',
+          data: 'grant_type=client_credentials',
         },
       });
 
