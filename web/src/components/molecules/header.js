@@ -1,34 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import Nav from '../atoms/nav';
 import { ease } from '../../utils/easing';
 import { media } from '../../utils/media-queries';
 import Marker from '../atoms/marker';
 
-const Header = () => (
-  <StyledHeader className="dark spacing-inner">
-    <Nav />
-    <h1 className="big">
-      <Marker text="Anna Ehrnsperger" duration={2} delay={0.3} />
+const Header = () => {
+  const [hideLogo, setHideLogo] = useState(false);
+  const [showSmall, setShowSmall] = useState(false);
+  const { scrollYProgress } = useViewportScroll();
+
+  useEffect(() => {
+    scrollYProgress.onChange(() => {
+      if (scrollYProgress.current > 0.04) {
+        setHideLogo(true);
+      } else {
+        setHideLogo(false);
+      }
+
+      if (scrollYProgress.current > 0.08) {
+        setShowSmall(true);
+      } else {
+        setShowSmall(false);
+      }
+    });
+  }, [scrollYProgress]);
+
+  return (
+    <StyledHeader className="spacing-inner">
+      <Nav active={showSmall} />
+      <h1 className="big">
+        <p>
+          Anna Ehrnsperger
+          <Marker
+            text="Anna Ehrnsperger"
+            duration={1}
+            delay={0.15}
+            active={!hideLogo}
+          />
+        </p>
+        <p>
+          Design Code
+          <Marker
+            text="Design Code"
+            duration={1}
+            delay={1}
+            active={!hideLogo}
+            style={{ transform: 'translateY(-2px)' }}
+          />
+        </p>
+      </h1>
       <br />
-      <Marker text="Design Code" duration={2} delay={1.2} />
-    </h1>
-    {/* <div className="grid small">
-      <p className="contact">
-        <p>E-Mail</p>
-        <p>Insta</p>
-        <p>GitHub</p>
-      </p>
-      <p className="intro">
-        Freelance designer, web developer and student based in Munich. I create
-        exciting digital experiences by combining precise design and
-        cutting-edge technology.
-      </p>
-    </div> */}
-  </StyledHeader>
-);
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   height: 88vh;
@@ -37,28 +65,21 @@ const StyledHeader = styled.header`
   justify-content: flex-end;
 
   h1 {
-    padding-bottom: var(--v-spacing-L);
-
-    span {
-      display: inline-block;
-      background: var(--white);
+    p {
+      position: relative;
       color: var(--black);
-      white-space: nowrap;
+
+      span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        white-space: nowrap;
+      }
     }
   }
 
   @media ${media.M} {
-    .grid {
-      padding-bottom: var(--spacing-S);
-
-      .contact {
-        grid-column: 1 / 4;
-      }
-
-      .intro {
-        grid-column: 4 / 7;
-      }
-    }
   }
 `;
 

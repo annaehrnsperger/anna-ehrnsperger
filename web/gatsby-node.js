@@ -1,27 +1,29 @@
-// const path = require(`path`);
+const path = require(`path`);
 
-// exports.createPages = async ({ actions, graphql }) => {
-//   const result = await graphql(`
-//     query Slug {
-//       post: allSanityJournalPost {
-//         nodes {
-//           slug {
-//             current
-//           }
-//         }
-//       }
-//     }
-//   `);
+exports.createPages = async ({ actions, graphql }) => {
+  const result = await graphql(`
+    query Slug {
+      posts: allSanityBlogPost {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
 
-//   const { nodes } = result.data.post;
+  const posts = result.data.posts.edges.map((edge) => edge.node);
 
-//   nodes.forEach((post, i) => {
-//     actions.createPage({
-//       path: `/journal/${post.slug.current}`,
-//       component: path.resolve(`./src/templates/post.js`),
-//       context: {
-//         slug: post.slug.current,
-//       },
-//     });
-//   });
-// };
+  posts.forEach((post) => {
+    actions.createPage({
+      path: post.slug.current,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        slug: post.slug.current,
+      },
+    });
+  });
+};

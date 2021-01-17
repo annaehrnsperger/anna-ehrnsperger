@@ -33,7 +33,7 @@ const Variables = createGlobalStyle`
     /* Clamp Fallback */ --fontsize-1: calc(30px + (60 - 30) * (100vw - 375px) / (2560 - 375));
     --fontsize-1: clamp(4rem, 10vw, 14rem);
     /* Clamp Fallback */ --fontsize-2: calc(15px + (30 - 15) * (100vw - 375px) / (2560 - 375));
-    --fontsize-2: clamp(1.5rem, 3vw, 2rem);
+    --fontsize-2: clamp(1.5rem, 2vw, 2.5rem);
     --letter-spacing: -0.4rem;
 
     /* Border */

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import SuisseLight from '../assets/fonts/SuisseIntl-Light-WebS.woff2';
 import SuisseRegular from '../assets/fonts/SuisseIntl-Regular-WebM.woff2';
 import SuisseMono from '../assets/fonts/SuisseIntlMono-Regular-WebS.woff2';
 
@@ -7,8 +6,6 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-family: var(--font-1);
-    color: var(--text-color);
-    background: var(--bg-color);
     font-size: 10px;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -20,14 +17,11 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: var(--fontsize-1);
+    color: var(--white);
+    background: var(--black);
   }
 
   /* Typography */
-
-  @font-face {
-    font-family: 'Suisse Light';
-    src: url(${SuisseLight});
-  }
 
   @font-face {
     font-family: 'Suisse Regular';
@@ -45,7 +39,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .small {
-    font-family: var(--font-3);
+    font-family: var(--font-1);
     font-size: var(--fontsize-2);
     line-height: 1.25;
     letter-spacing: 0.1px;
@@ -66,34 +60,21 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .spacing-inner {
-    padding: var(--v-spacing-M);
+    padding: var(--v-spacing-XL) var(--v-spacing-M);
   }
 
-  .spacing-removed {
-    margin-left: calc(var(--v-spacing-S) * -1);
-    margin-bottom: calc(var(--v-spacing-S) * -1);
-  }
-
-  /* Layout */
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
-    gap: var(--spacing-XS);
-
-    * {
-      grid-column: 1 / calc(var(--grid-cols) + 1);
-    }
-  }
-
-  .dark {
-    color: var(--white);
-    background: var(--black);
+  .spacing-inner-small {
+    padding: var(--v-spacing-S) var(--v-spacing-M);
   }
 
   .light {
     color: var(--black);
     background: var(--white);
+  }
+
+  .dark {
+    color: var(--white);
+    background: var(--black);
   }
 
 `;

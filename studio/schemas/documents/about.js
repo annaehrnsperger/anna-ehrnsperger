@@ -4,14 +4,9 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Title',
-    },
-    {
       name: 'description',
-      type: 'portableText',
       title: 'Description',
+      type: 'text',
     },
   ],
   preview: {

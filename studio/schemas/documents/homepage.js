@@ -4,14 +4,31 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Title',
+      name: 'description',
+      type: 'text',
+      title: 'Description',
     },
     {
-      name: 'description',
-      type: 'portableText',
-      title: 'Description',
+      name: 'projects',
+      title: 'Projects',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'project' }],
+        },
+      ],
+    },
+    {
+      name: 'posts',
+      title: 'Posts',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'blogPost' }],
+        },
+      ],
     },
   ],
   preview: {

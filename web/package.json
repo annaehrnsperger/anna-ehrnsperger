@@ -24,7 +24,9 @@
     }
   },
   "dependencies": {
+    "@loadable/component": "^5.14.1",
     "@sanity/block-content-to-react": "^2.0.7",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.11.1",
     "dotenv": "^8.2.0",
     "emotion": "^10.0.27",
@@ -34,10 +36,14 @@
     "gatsby-plugin-react-helmet": "^3.8.0",
     "gatsby-plugin-styled-components": "^3.8.0",
     "gatsby-source-sanity": "^6.0.4",
+    "p5": "^1.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.1",
+    "react-intersection-observer": "^8.31.0",
+    "react-p5-wrapper": "^2.3.0",
+    "react-syntax-highlighter": "^15.4.3",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

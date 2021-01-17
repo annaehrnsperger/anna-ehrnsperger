@@ -31,15 +31,5 @@ export default {
       name: 'image',
       type: 'image',
     },
-    {
-      type: 'color',
-      name: 'textColor',
-      title: 'Text color',
-    },
-    {
-      type: 'color',
-      name: 'bgColor',
-      title: 'Background color',
-    },
   ],
 };

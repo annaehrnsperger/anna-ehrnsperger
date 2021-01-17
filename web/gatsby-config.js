@@ -4,8 +4,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `A blank theme for Gatsby.`,
+    title: `Anna Ehrnsperger`,
+    description: `Design Code`,
     author: `Anna Ehrnsperger`,
   },
   plugins: [
@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 'v0ftq7z1',
+        projectId: 'o1wghi20',
         dataset: 'production',
         watchMode: true,
         overlayDrafts: true,

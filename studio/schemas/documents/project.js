@@ -14,11 +14,6 @@ export default {
       title: 'URL',
     },
     {
-      title: 'Description',
-      name: 'description',
-      type: 'portableText',
-    },
-    {
       name: 'images',
       title: 'Images',
       type: 'array',

@@ -37,7 +37,7 @@ const SEO = ({ lang = 'de', siteTitle = '' }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charSet="utf-8" />
       <meta name="description" content={description} />
-      <meta property="og:image" content={image.asset.url} />
+      <meta property="og:image" content={image?.asset.url} />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:site_name" content={siteTitle} key="ogsitetitle" />
       <meta
