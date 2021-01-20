@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { useWindowSize } from '../../hooks/useWindowSize';
+import { media } from '../../utils/media-queries';
 
 const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
   const size = useWindowSize();
@@ -11,7 +12,7 @@ const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
 
   useEffect(() => {
     setRandomPos({ x: size.width * (Math.random() / 1.2) });
-  }, []);
+  }, [size]);
 
   return (
     <StyledPreviewImage
@@ -39,8 +40,16 @@ const StyledPreviewImage = styled.figure`
 
   .gatsby-image-wrapper,
   img {
-    width: 4vw;
-    height: 4vw;
+    width: 7vw;
+    height: 7vw;
+  }
+
+  @media ${media.M} {
+    .gatsby-image-wrapper,
+    img {
+      width: 4vw;
+      height: 4vw;
+    }
   }
 `;
 
