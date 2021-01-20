@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
-import Marker from './marker';
-import PreviewImage from './previewImage';
+import Marker from '../atoms/marker';
+import PreviewImage from '../atoms/previewImage';
 import { media } from '../../utils/media-queries';
-import Fade from './fade';
+import Fade from '../atoms/fade';
 
 const WeeklyAlbum = () => {
   const [playlist, setPlaylist] = useState('');
   const [hover, setHover] = useState(false);
-  const [hoverSecond, setHoverSecond] = useState(false);
   const [mouseImagePos, setMouseImagePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -46,43 +44,38 @@ const WeeklyAlbum = () => {
     setMouseImagePos({ x: e.pageX / speed, y: e.pageY / (speed * -10) });
   };
 
-  const { ref, inView, entry } = useInView({ threshold: 0.8 });
+  const { ref, inView } = useInView({ threshold: 0.8 });
 
   return (
     <Fade show={inView}>
-      <StyledAlbum className="small" onMouseMove={moveImageMouse} ref={ref}>
+      <StyledAlbum
+        className="small"
+        onMouseMove={moveImageMouse}
+        ref={ref}
+        onMouseOver={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onFocus={() => setHover(true)}
+      >
         <a href={link} target="_blank" rel="noreferrer">
-          <div
-            className="title"
-            onMouseOver={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            onFocus={() => setHover(true)}
-          >
-            <p>Album of the Week</p>
-            <Marker active={hover} text="Album of the Week" duration={0.8} />
+          <div className="title">
+            <p>
+              Album of <br />
+              the Week
+            </p>
           </div>
           <div className="content">
-            <div
-              className="text"
-              onMouseOver={() => setHoverSecond(true)}
-              onMouseLeave={() => setHoverSecond(false)}
-              onFocus={() => setHoverSecond(true)}
-            >
-              <p style={{ opacity: hoverSecond ? 0 : 1 }}>
+            <div className="text">
+              <p style={{ opacity: hover ? 0 : 1 }}>
                 {artist} – {album}
               </p>
               <Marker
-                active={hoverSecond}
+                active={hover}
                 text={`${artist} – ${album}`}
                 duration={0.8}
               />
             </div>
           </div>
-          <PreviewImage
-            mouseImagePos={mouseImagePos}
-            imgSrc={image}
-            imgAlt="Album Of The Week"
-          />
+          <PreviewImage mouseImagePos={mouseImagePos} imgSrc={image} album />
         </a>
       </StyledAlbum>
     </Fade>
@@ -99,8 +92,12 @@ const StyledAlbum = styled.section`
     justify-content: space-between;
     position: relative;
 
+    .title {
+      min-width: 27vw;
+    }
+
     .content {
-      width: 30%;
+      width: 100%;
     }
 
     .text,
@@ -117,6 +114,11 @@ const StyledAlbum = styled.section`
   }
 
   @media ${media.M} {
+    a {
+      .content {
+        width: 30%;
+      }
+    }
   }
 `;
 

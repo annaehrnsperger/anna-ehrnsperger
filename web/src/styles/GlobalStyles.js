@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import SuisseRegular from '../assets/fonts/SuisseIntl-Regular-WebM.woff2';
+import SuisseRegularBold from '../assets/fonts/SuisseIntl-SemiBold-WebS.woff2';
 import SuisseMono from '../assets/fonts/SuisseIntlMono-Regular-WebS.woff2';
 
 const GlobalStyles = createGlobalStyle`
@@ -19,7 +20,13 @@ const GlobalStyles = createGlobalStyle`
     font-size: var(--fontsize-1);
     color: var(--white);
     background: var(--black);
+    overflow-x: hidden;
   }
+
+  ::selection {
+    color: var(--white);
+    background: var(--white);
+  } 
 
   /* Typography */
 
@@ -29,11 +36,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @font-face {
+    font-family: 'Suisse Regular Bold';
+    src: url(${SuisseRegularBold});
+  }
+
+  @font-face {
     font-family: 'Suisse Mono';
     src: url(${SuisseMono});
   }
 
-  .big {
+  .large {
     letter-spacing: var(--letter-spacing);
     line-height: 1.1;
   }

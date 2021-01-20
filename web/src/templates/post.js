@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Link, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Richtext from '../components/atoms/richtext';
 import SEO from '../components/organisms/seo';
 import Layout from '../components/organisms/layout';
-import Nav from '../components/atoms/nav';
+import Nav from '../components/molecules/nav';
 import Fade from '../components/atoms/fade';
 import PageTransition from '../components/atoms/pageTransition';
+import Marker from '../components/atoms/marker';
 
-const PostTemplate = ({ data }) => {
+const PostTemplate = ({ data, pageContext }) => {
   const [active, setActive] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
-    <Layout>
+    <Layout light="light">
       <SEO />
       <Nav
         light
@@ -28,40 +29,31 @@ const PostTemplate = ({ data }) => {
       <StyledPost className="small light spacing-inner">
         <Fade show>
           <div className="title">
-            <p className="left">12/12/2000</p>
-            <p className="right">Build a Great Website without JavaScript</p>
+            <p className="left">{data.posts.publishedAt}</p>
+            <h2 className="right">{data.posts.title}</h2>
           </div>
           <div className="content" />
           <div className="left">
-            <h1>{data.posts.title}</h1>
-            <span style={{ paddingLeft: 'var(--spacing-XXS)' }}>
-              {data.posts.publishedAt}
-            </span>
             <Richtext blocks={data.posts._rawContent} />
-
-            <img src={Preview} />
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo
-              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-              sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-              amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut labore et dolore magna aliquyam erat, sed diam
-              voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-              dolor sit amet.
-            </p>
           </div>
           <div className="right" />
-
-          {/* <div className="title">
-          <h1>{data.posts.title}</h1>
-          <span style={{ paddingLeft: 'var(--spacing-XXS)' }}>
-          {data.posts.publishedAt}
-          </span>
-        </div> */}
-          {/* <Richtext blocks={data.posts._rawContent} /> */}
+          <div className="next">
+            <p className="left" />
+            <div
+              className="right"
+              onMouseOver={() => setHover(true)}
+              onFocus={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              <Link to={`/${pageContext.next}`}>Read next story</Link>
+              <Marker
+                active={hover}
+                light
+                text="Read next story"
+                style={{ pointerEvents: 'none' }}
+              />
+            </div>
+          </div>
         </Fade>
       </StyledPost>
       <PageTransition active={active} light zIndex={5} />
@@ -83,61 +75,89 @@ export const query = graphql`
 
 const StyledPost = styled.div`
   .title,
-  .content {
+  .content,
+  .next {
     display: flex;
     justify-content: space-between;
   }
 
+  .next {
+    .right {
+      position: relative;
+
+      a {
+        color: var(--black);
+        background: var(--white);
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
   .title {
     padding-top: var(--v-spacing-XL);
+    padding-bottom: var(--spacing-XS);
+
+    .left {
+      margin: 0;
+    }
   }
 
   .left {
     width: 70%;
-    img {
-      width: 100%;
-    }
   }
 
   .right {
     width: 30%;
   }
 
-  /*   
-  padding: var(--spacing-XXS);
-  @media (min-width: 768px) {
-    padding: var(--spacing-XS);
+  p,
+  ul {
+    padding: var(--spacing-XXS) 0;
   }
 
-  h2 span {
-    font-family: var(--font-1);
-    background: var(--bg-color);
-    color: var(--text-color);
+  pre {
+    margin: var(--spacing-XXS) 0;
   }
 
-  .content {
-    margin-top: 66vh;
-
-    .title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: var(--spacing-XS);
-      h1 {
-        width: 75%;
-      }
+  ul {
+    li:before {
+      padding-right: var(--spacing-S);
+      content: '⬝';
     }
+  }
 
-    p,
-    ul {
-      margin: var(--spacing-XXS) 0;
-      @media (min-width: 768px) {
-        margin: var(--spacing-XS) 0;
-        width: 90%;
-      }
-    }
+  strong {
+    font-family: var(--font-3);
+    font-weight: inherit;
+  }
 
-    h3 {
-      margin-top: var(--spacing-S);
+  h3 {
+    margin-top: var(--v-spacing-L);
+    font-size: var(--fontsize-3);
+    letter-spacing: -0.1rem;
+  }
+
+  a {
+    background: var(--black);
+    color: var(--white);
+
+    &:hover {
+      background: var(--white);
+      color: var(--black);
     }
-  } */
+  }
+
+  code {
+    font-family: var(--font-2);
+  }
 `;
+
+PostTemplate.propTypes = {
+  data: PropTypes.object,
+  pageContext: PropTypes.object,
+};

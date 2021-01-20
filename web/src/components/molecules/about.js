@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
 import { media } from '../../utils/media-queries';
-import Fade from './fade';
-import Marker from './marker';
+import Fade from '../atoms/fade';
+import Marker from '../atoms/marker';
 
 const About = ({ description }) => {
-  const { ref, inView } = useInView({ threshold: 1 });
+  const { ref, inView } = useInView({ threshold: 0.5 });
   const [hover, setHover] = useState(false);
   const [hoverSecond, setHoverSecond] = useState(false);
   const [hoverThird, setHoverThird] = useState(false);
@@ -25,6 +25,7 @@ const About = ({ description }) => {
             Email
             <Marker active={hover} text="Email" duration={0.8} />
           </a>
+          <br className="space" />
           <a
             href="https://www.instagram.com/annaehrnsperger/"
             target="_blank"
@@ -36,6 +37,7 @@ const About = ({ description }) => {
             Instagram
             <Marker active={hoverSecond} text="Instagram" duration={0.8} />
           </a>
+          <br className="space" />
           <a
             href="https://github.com/annaehrnsperger"
             target="_blank"
@@ -55,6 +57,14 @@ const About = ({ description }) => {
 };
 
 const StyledDescription = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .contact {
+    min-width: 27vw;
+  }
+
   a {
     display: block;
     position: relative;
@@ -67,12 +77,18 @@ const StyledDescription = styled.section`
   }
 
   @media ${media.M} {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    .space {
+      display: none;
+    }
 
     .intro {
       width: 30%;
+    }
+
+    .contact {
+      a {
+        margin-bottom: 0;
+      }
     }
   }
 `;

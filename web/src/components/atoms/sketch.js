@@ -1,11 +1,12 @@
-import { useWindowSize } from '../../hooks/useWindowSize';
+export const Sketch = (p) => {
+  const isClientSide = typeof window !== 'undefined';
+  const width = isClientSide && window.innerWidth;
+  const height = isClientSide && window.innerHeight;
 
-export function Sketch(p) {
-  let y = 0;
+  let y = width / 2;
 
   p.setup = () => {
-    p.background('red');
-    p.createCanvas(window.innerWidth, window.innerHeight);
+    p.createCanvas(width, height);
     p.noStroke();
   };
 
@@ -16,9 +17,9 @@ export function Sketch(p) {
   p.draw = function () {
     if (p.mouseIsPressed) {
       p.stroke('var(--white)');
-      p.strokeWeight(75);
+      p.strokeWeight(100);
       p.strokeCap(p.SQUARE);
       p.line(p.mouseX, y, p.pmouseX, y);
     }
   };
-}
+};

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import { useWindowSize } from '../../hooks/useWindowSize';
 
-const PreviewImage = ({ mouseImagePos, imgSrc, imgAlt }) => {
+const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
   const size = useWindowSize();
 
   const [randomPos, setRandomPos] = useState({ x: 0 });
@@ -19,8 +20,11 @@ const PreviewImage = ({ mouseImagePos, imgSrc, imgAlt }) => {
         transform: `translate3d(${mouseImagePos.x}px,${mouseImagePos.y}px,0)`,
       }}
     >
-      <img src={imgSrc} alt={imgAlt} />
-      {/* <Img fluid="" /> */}
+      {album ? (
+        <img src={imgSrc} alt="Cover" />
+      ) : (
+        <Img fluid={imgSrc} alt={imgAlt} />
+      )}
     </StyledPreviewImage>
   );
 };
@@ -33,6 +37,7 @@ const StyledPreviewImage = styled.figure`
   top: 15%;
   display: flex;
 
+  .gatsby-image-wrapper,
   img {
     width: 4vw;
     height: 4vw;
@@ -40,9 +45,10 @@ const StyledPreviewImage = styled.figure`
 `;
 
 PreviewImage.propTypes = {
+  album: PropTypes.bool,
   mouseImagePos: PropTypes.object,
   imgAlt: PropTypes.string,
-  imgSrc: PropTypes.string,
+  imgSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default PreviewImage;

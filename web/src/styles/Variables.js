@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { media } from '../utils/media-queries';
 
 const Variables = createGlobalStyle`
 
@@ -22,19 +23,21 @@ const Variables = createGlobalStyle`
     /* Clamp Fallback */ --v-spacing-M: 4rem;
     --v-spacing-M: clamp(var(--spacing-XS), 3vw, var(--spacing-M));
     /* Clamp Fallback */ --v-spacing-L: 10rem;
-    --v-spacing-L: clamp(var(--spacing-L), 5vw, var(--spacing-XL));
+    --v-spacing-L: clamp(var(--spacing-M), 5vw, var(--spacing-L));
     /* Clamp Fallback */ --v-spacing-XL: 17rem;
-    --v-spacing-XL: clamp(var(--spacing-XL), 5vw, var(--spacing-XXL));
+    --v-spacing-XL: clamp(var(--spacing-L), 5vw, var(--spacing-XXL));
 
     /* Fonts */
     --font-1: 'Suisse Regular', sans-serif;
     --font-2: 'Suisse Mono', serif;
-    --font-3: 'Suisse Light', sans-serif;
+    --font-3: 'Suisse Regular Bold', sans-serif;
     /* Clamp Fallback */ --fontsize-1: calc(30px + (60 - 30) * (100vw - 375px) / (2560 - 375));
     --fontsize-1: clamp(4rem, 10vw, 14rem);
-    /* Clamp Fallback */ --fontsize-2: calc(15px + (30 - 15) * (100vw - 375px) / (2560 - 375));
-    --fontsize-2: clamp(1.5rem, 2vw, 2.5rem);
-    --letter-spacing: -0.4rem;
+    /* Clamp Fallback */ --fontsize-2: calc(15px + (25 - 15) * (100vw - 375px) / (2560 - 375));
+    --fontsize-2: clamp(1.5rem, 2vw, 2.6rem);
+    /* Clamp Fallback */ --fontsize-3: calc(22px + (46 - 22) * (100vw - 375px) / (2560 - 375));
+    --fontsize-3: clamp(2.2rem, 3vw, 4.6rem);
+    --letter-spacing: -0.1rem;
 
     /* Border */
     --border-width: 1px;
@@ -45,6 +48,10 @@ const Variables = createGlobalStyle`
     --grid-gap: var(--spacing-S);
 
     /* Misc */
+
+    @media ${media.M} {
+      --letter-spacing: -0.4rem;
+    }
   }
 `;
 

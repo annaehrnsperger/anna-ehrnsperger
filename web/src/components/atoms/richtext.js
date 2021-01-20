@@ -1,20 +1,20 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
-import styled from 'styled-components';
 import Img from 'gatsby-image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { getFluidGatsbyImage } from 'gatsby-source-sanity';
+import PropTypes from 'prop-types';
 
-const sanityConfig = { projectId: 'yc7xvu8h', dataset: 'production' };
+const sanityConfig = { projectId: 'o1wghi20', dataset: 'production' };
 
 const RichText = ({ blocks }) => {
   const serializers = {
     types: {
       // eslint-disable-next-line react/display-name
       mainImage: ({ node }) => (
-        <StyledAsset>
-          <StyledImage
+        <figure>
+          <Img
             fluid={getFluidGatsbyImage(
               node.image.asset._ref,
               { maxWidth: 3600 },
@@ -22,18 +22,14 @@ const RichText = ({ blocks }) => {
             )}
             alt={node.alt}
           />
-        </StyledAsset>
+        </figure>
       ),
       // eslint-disable-next-line react/display-name
       code: ({ node }) => (
         <SyntaxHighlighter
           language={node.language}
           style={dark}
-          customStyle={{
-            background: 'transparent',
-            border: 'var(--border)',
-            borderRadius: 'var(--border-radius)',
-          }}
+          customStyle={{ background: 'var(--black)' }}
         >
           {node.code}
         </SyntaxHighlighter>
@@ -58,18 +54,8 @@ const RichText = ({ blocks }) => {
   return <PortableText blocks={blocks} serializers={serializers} />;
 };
 
-const StyledAsset = styled.figure`
-  border: var(--border);
-  border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-XS);
-`;
-
-const StyledImage = styled(Img)`
-  border-radius: var(--image-radius);
-  display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-`;
+RichText.propTypes = {
+  blocks: PropTypes.array,
+};
 
 export default RichText;

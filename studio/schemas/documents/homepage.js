@@ -12,12 +12,7 @@ export default {
       name: 'projects',
       title: 'Projects',
       type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'project' }],
-        },
-      ],
+      of: [{ type: 'project' }],
     },
     {
       name: 'posts',

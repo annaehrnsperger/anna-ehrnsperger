@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { motion, useViewportScroll } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import Nav from '../atoms/nav';
-import { ease } from '../../utils/easing';
+import { useViewportScroll } from 'framer-motion';
+import Nav from './nav';
 import { media } from '../../utils/media-queries';
 import Marker from '../atoms/marker';
 
@@ -32,7 +29,7 @@ const Header = () => {
   return (
     <StyledHeader className="spacing-inner">
       <Nav active={showSmall} />
-      <h1 className="big">
+      <h1 className="large">
         <p>
           Anna Ehrnsperger
           <Marker
@@ -66,6 +63,7 @@ const StyledHeader = styled.header`
 
   h1 {
     p {
+      white-space: nowrap;
       position: relative;
       color: var(--black);
 

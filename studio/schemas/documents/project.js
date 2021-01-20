@@ -1,3 +1,5 @@
+import { FiCircle } from 'react-icons/fi';
+
 export default {
   name: 'project',
   title: 'Project',
@@ -17,12 +19,22 @@ export default {
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [{ type: 'mainImage' }],
+      of: [
+        {
+          type: 'mainImage',
+        },
+      ],
     },
   ],
   preview: {
     select: {
       title: 'title',
+    },
+    prepare({ title }) {
+      return {
+        title,
+        media: FiCircle,
+      };
     },
   },
 };
