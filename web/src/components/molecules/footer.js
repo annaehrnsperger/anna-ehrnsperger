@@ -16,7 +16,7 @@ const Footer = ({ light }) => {
   const [hoverThird, setHoverThird] = useState(false);
 
   return (
-    <StyledFooter ref={ref} className={`${light} spacing-inner-small`}>
+    <StyledFooter ref={ref} className={`${light}`}>
       <Fade show={inView}>
         <p className="date">© {year.getFullYear()}</p>
         <div className="links">
@@ -76,8 +76,8 @@ const Footer = ({ light }) => {
 
 const StyledFooter = styled.footer`
   font-size: var(--fontsize-2);
-  padding-top: var(--v-spacing-XL);
-  padding-bottom: var(--spacing-S);
+  padding: var(--v-spacing-XL) var(--v-spacing-M) var(--v-spacing-M)
+    var(--v-spacing-M);
 
   a {
     position: relative;
@@ -104,7 +104,8 @@ const StyledFooter = styled.footer`
   }
 
   @media ${media.M} {
-    padding-bottom: 0;
+    padding: var(--v-spacing-XL) var(--v-spacing-M) var(--v-spacing-S)
+      var(--v-spacing-M);
 
     div {
       .date {

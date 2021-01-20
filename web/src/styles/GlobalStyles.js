@@ -89,6 +89,7 @@ const GlobalStyles = createGlobalStyle`
     background: var(--black);
   }
 
+
 `;
 
 export default GlobalStyles;

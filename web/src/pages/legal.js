@@ -47,7 +47,7 @@ const StyledLegalPage = styled.section`
   min-height: 100vh;
 
   .large {
-    padding-top: var(--spacing-XXL);
+    padding-top: var(--v-spacing-XL);
     padding-bottom: var(--v-spacing-S);
   }
 

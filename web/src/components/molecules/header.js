@@ -50,7 +50,6 @@ const Header = () => {
           />
         </p>
       </h1>
-      <br />
     </StyledHeader>
   );
 };

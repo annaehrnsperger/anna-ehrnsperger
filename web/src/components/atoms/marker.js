@@ -36,7 +36,7 @@ Marker.propTypes = {
   delay: PropTypes.number,
   duration: PropTypes.number,
   style: PropTypes.object,
-  light: PropTypes.bool,
+  light: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 export default Marker;
