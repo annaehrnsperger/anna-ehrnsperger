@@ -76,7 +76,8 @@ const Footer = ({ light }) => {
 
 const StyledFooter = styled.footer`
   font-size: var(--fontsize-2);
-  padding-top: var(--spacing-XL);
+  padding-top: var(--v-spacing-XL);
+  padding-bottom: var(--spacing-S);
 
   a {
     position: relative;
@@ -103,6 +104,8 @@ const StyledFooter = styled.footer`
   }
 
   @media ${media.M} {
+    padding-bottom: 0;
+
     div {
       .date {
         width: 70%;

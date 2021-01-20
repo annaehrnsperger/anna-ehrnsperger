@@ -79,6 +79,7 @@ const StyledStory = styled.div`
 
   .headline {
     position: relative;
+    width: 100%;
 
     span {
       position: absolute;

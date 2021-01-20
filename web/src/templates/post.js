@@ -9,6 +9,7 @@ import Nav from '../components/molecules/nav';
 import Fade from '../components/atoms/fade';
 import PageTransition from '../components/atoms/pageTransition';
 import Marker from '../components/atoms/marker';
+import { media } from '../utils/media-queries';
 
 const PostTemplate = ({ data, pageContext }) => {
   const [active, setActive] = useState(false);
@@ -26,30 +27,29 @@ const PostTemplate = ({ data, pageContext }) => {
           }, 1000);
         }}
       />
-      <StyledPost className="small light spacing-inner">
+      <StyledPost className=" light spacing-inner">
         <Fade show>
-          <div className="title">
+          <div className="title small">
             <p className="left">{data.posts.publishedAt}</p>
             <h2 className="right">{data.posts.title}</h2>
           </div>
-          <div className="content" />
-          <div className="left">
+          <div className="left small">
             <Richtext blocks={data.posts._rawContent} />
           </div>
           <div className="right" />
           <div className="next">
             <p className="left" />
             <div
-              className="right"
+              className="right large"
               onMouseOver={() => setHover(true)}
               onFocus={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
-              <Link to={`/${pageContext.next}`}>Read next story</Link>
+              <Link to={`/${pageContext.next}`}>Next story</Link>
               <Marker
                 active={hover}
                 light
-                text="Read next story"
+                text="Next story"
                 style={{ pointerEvents: 'none' }}
               />
             </div>
@@ -83,6 +83,8 @@ const StyledPost = styled.div`
 
   .next {
     .right {
+      margin-top: var(--spacing-M);
+      padding-bottom: var(--v-spacing-XL);
       position: relative;
 
       a {
@@ -96,6 +98,10 @@ const StyledPost = styled.div`
         left: 0;
       }
     }
+
+    .left {
+      display: none;
+    }
   }
 
   .title {
@@ -104,15 +110,16 @@ const StyledPost = styled.div`
 
     .left {
       margin: 0;
+      padding: 0;
     }
   }
 
   .left {
-    width: 70%;
+    min-width: 27vw;
   }
 
   .right {
-    width: 30%;
+    width: 100%;
   }
 
   p,
@@ -139,7 +146,6 @@ const StyledPost = styled.div`
   h3 {
     margin-top: var(--v-spacing-L);
     font-size: var(--fontsize-3);
-    letter-spacing: -0.1rem;
   }
 
   a {
@@ -154,6 +160,28 @@ const StyledPost = styled.div`
 
   code {
     font-family: var(--font-2);
+  }
+
+  @media ${media.M} {
+    .left {
+      width: 70%;
+    }
+
+    .right {
+      width: 30%;
+    }
+
+    .next {
+      .right {
+        font-size: var(--fontsize-2);
+        letter-spacing: inherit;
+        margin-top: var(--spacing-M);
+      }
+
+      .left {
+        display: block;
+      }
+    }
   }
 `;
 

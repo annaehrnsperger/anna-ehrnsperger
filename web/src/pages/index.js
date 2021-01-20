@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { useInView } from 'react-intersection-observer';
+import styled from 'styled-components';
 import SEO from '../components/organisms/seo';
 import { Sketch } from '../components/atoms/sketch';
 import { loadableP5 as P5Wrapper } from '../utils/loadable';
@@ -12,6 +13,7 @@ import Project from '../components/molecules/project';
 import Story from '../components/molecules/story';
 import Fade from '../components/atoms/fade';
 import WeeklyAlbum from '../components/molecules/weeklyAlbum';
+import { media } from '../utils/media-queries';
 
 const IndexPage = ({ data }) => {
   const { ref, inView } = useInView({ threshold: 0.2 });
@@ -21,11 +23,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO />
-      <div
-        style={{ position: 'fixed', top: 0, zIndex: 5, pointerEvents: 'none' }}
-      >
+      <StyledCanvas>
         <P5Wrapper sketch={Sketch} />
-      </div>
+      </StyledCanvas>
       <Header />
       <About description={description} />
       <section className="dark spacing-inner">
@@ -105,6 +105,18 @@ export const query = graphql`
         }
       }
     }
+  }
+`;
+
+const StyledCanvas = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: none;
+
+  @media ${media.M} {
+    display: block;
   }
 `;
 
