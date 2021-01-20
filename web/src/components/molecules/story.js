@@ -36,7 +36,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
           onClick={() => {
             setActive(true);
             setTimeout(() => {
-              navigate(slug);
+              navigate(`/${slug}`);
             }, 1000);
           }}
         >

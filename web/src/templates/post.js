@@ -45,13 +45,13 @@ const PostTemplate = ({ data, pageContext }) => {
               onFocus={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
-              <Link to={`/${pageContext.next}`}>Next story</Link>
               <Marker
                 active={hover}
                 light
                 text="Next story"
                 style={{ pointerEvents: 'none' }}
               />
+              <Link to={`/${pageContext.next}`}>Next story</Link>
             </div>
           </div>
         </Fade>
