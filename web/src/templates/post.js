@@ -28,7 +28,7 @@ const PostTemplate = ({ data, pageContext }) => {
         }}
       />
       <StyledPost className=" light spacing-inner">
-        <Fade duration={0.4}>
+        <Fade>
           <div className="title small">
             <p className="left">{data.posts.publishedAt}</p>
             <h2 className="right">{data.posts.title}</h2>
