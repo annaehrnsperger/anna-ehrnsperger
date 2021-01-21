@@ -26,13 +26,15 @@ const RichText = ({ blocks }) => {
       ),
       // eslint-disable-next-line react/display-name
       code: ({ node }) => (
-        <SyntaxHighlighter
-          language={node.language}
-          style={dark}
-          customStyle={{ background: 'var(--black)' }}
-        >
-          {node.code}
-        </SyntaxHighlighter>
+        <div className="code">
+          <SyntaxHighlighter
+            language={node.language}
+            style={dark}
+            customStyle={{ background: 'var(--black)' }}
+          >
+            {node.code}
+          </SyntaxHighlighter>
+        </div>
       ),
     },
     marks: {

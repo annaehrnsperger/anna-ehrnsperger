@@ -123,12 +123,10 @@ const StyledPost = styled.div`
   }
 
   p,
-  ul {
+  ul,
+  figure,
+  .code {
     padding: var(--spacing-XXS) 0;
-  }
-
-  pre {
-    margin: var(--spacing-XXS) 0;
   }
 
   ul {
