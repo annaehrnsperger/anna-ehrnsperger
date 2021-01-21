@@ -28,33 +28,33 @@ const PostTemplate = ({ data, pageContext }) => {
         }}
       />
       <StyledPost className=" light spacing-inner">
-        <Fade duration={0.4}>
-          <div className="title small">
-            <p className="left">{data.posts.publishedAt}</p>
-            <h2 className="right">{data.posts.title}</h2>
+        {/* <Fade duration={0.4}> */}
+        <div className="title small">
+          <p className="left">{data.posts.publishedAt}</p>
+          <h2 className="right">{data.posts.title}</h2>
+        </div>
+        <div className="left small">
+          <Richtext blocks={data.posts._rawContent} />
+        </div>
+        <div className="right" />
+        <div className="next">
+          <p className="left" />
+          <div
+            className="right large"
+            onMouseOver={() => setHover(true)}
+            onFocus={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            <Marker
+              active={hover}
+              light
+              text="Next story"
+              style={{ pointerEvents: 'none' }}
+            />
+            <Link to={`/${pageContext.next}`}>Next story</Link>
           </div>
-          <div className="left small">
-            <Richtext blocks={data.posts._rawContent} />
-          </div>
-          <div className="right" />
-          <div className="next">
-            <p className="left" />
-            <div
-              className="right large"
-              onMouseOver={() => setHover(true)}
-              onFocus={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
-              <Marker
-                active={hover}
-                light
-                text="Next story"
-                style={{ pointerEvents: 'none' }}
-              />
-              <Link to={`/${pageContext.next}`}>Next story</Link>
-            </div>
-          </div>
-        </Fade>
+        </div>
+        {/* </Fade> */}
       </StyledPost>
       <PageTransition active={active} light zIndex={5} />
     </Layout>

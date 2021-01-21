@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import Marker from '../atoms/marker';
 import { media } from '../../utils/media-queries';
@@ -25,6 +25,11 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   const { ref, inView } = useInView({ threshold: 1 });
   const [active, setActive] = useState(false);
 
+  const changeRoute = () => {
+    setTimeout(() => navigate(`/${slug}/`), 700);
+    setActive(true);
+  };
+
   return (
     <>
       <Fade show={inView}>
@@ -33,10 +38,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onMouseMove={moveImageMouse}
-          onClick={() => {
-            setActive(true);
-            setTimeout(() => navigate(`/${slug}`), 700);
-          }}
+          onClick={changeRoute}
         >
           <p className="date small">{date}</p>
           <div className="headline small">
