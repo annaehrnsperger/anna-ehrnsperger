@@ -15,10 +15,10 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   const [mouseImagePos, setMouseImagePos] = useState({ x: 0, y: 0 });
 
   const moveImageMouse = (e) => {
-    const speed = 30;
+    const speed = 50;
     setMouseImagePos({
       x: e.pageX / speed,
-      y: e.pageY / (speed * 10),
+      y: e.pageY / (speed * 3),
     });
   };
 

@@ -13,10 +13,10 @@ const Project = ({ title, url, imgSrc, imgAlt }) => {
   const [mouseImagePos, setMouseImagePos] = useState({ x: 0, y: 0 });
 
   const moveImageMouse = (e) => {
-    const speed = 30;
+    const speed = 50;
     setMouseImagePos({
       x: e.pageX / speed,
-      y: e.pageY / (speed * 9),
+      y: e.pageY / (speed * 3),
     });
   };
 
