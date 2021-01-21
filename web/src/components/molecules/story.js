@@ -35,9 +35,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
           onMouseMove={moveImageMouse}
           onClick={() => {
             setActive(true);
-            setTimeout(() => {
-              navigate(`/${slug}`);
-            }, 1000);
+            setTimeout(() => navigate(`/${slug}`), 700);
           }}
         >
           <p className="date small">{date}</p>

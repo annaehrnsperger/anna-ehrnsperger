@@ -24,11 +24,11 @@ const PostTemplate = ({ data, pageContext }) => {
           setActive(true);
           setTimeout(() => {
             navigate('/');
-          }, 1000);
+          }, 800);
         }}
       />
       <StyledPost className=" light spacing-inner">
-        <Fade show>
+        <Fade duration={0.4}>
           <div className="title small">
             <p className="left">{data.posts.publishedAt}</p>
             <h2 className="right">{data.posts.title}</h2>

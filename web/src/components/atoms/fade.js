@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ease } from '../../utils/easing';
 
-const Fade = ({ children, show, duration = 0.9, delay }) => (
+const Fade = ({ children, show = true, duration = 0.9, delay }) => (
   <StyledFade
     initial={{ opacity: 0 }}
     animate={{ opacity: show ? 1 : 0 }}

@@ -9,7 +9,7 @@ const PageTransition = ({ active, light = false, zIndex }) => (
     className={light ? 'dark' : 'light'}
     initial={{ width: 0 }}
     animate={{ width: active ? '100vw' : 0 }}
-    transition={{ duration: 1, ease: ease.inOutSnap }}
+    transition={{ duration: 0.8, ease: ease.inOutSnap }}
     style={{ zIndex }}
   />
 );
