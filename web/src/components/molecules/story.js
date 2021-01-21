@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Link, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import Marker from '../atoms/marker';
 import { media } from '../../utils/media-queries';
 import PreviewImage from '../atoms/previewImage';
@@ -25,20 +25,15 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   const { ref, inView } = useInView({ threshold: 1 });
   const [active, setActive] = useState(false);
 
-  const changeRoute = () => {
-    setTimeout(() => navigate(`/${slug}/`), 700);
-    setActive(true);
-  };
-
   return (
-    <>
+    <TransitionLink to={`/${slug}`} exit={{ length: 1 }} entry={{ delay: 0.6 }}>
       <Fade show={inView}>
         <StyledStory
           ref={ref}
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onMouseMove={moveImageMouse}
-          onClick={changeRoute}
+          onClick={() => setActive(true)}
         >
           <p className="date small">{date}</p>
           <div className="headline small">
@@ -55,7 +50,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
         </StyledStory>
       </Fade>
       <PageTransition active={active} />
-    </>
+    </TransitionLink>
   );
 };
 

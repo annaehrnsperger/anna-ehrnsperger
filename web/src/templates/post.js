@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import Richtext from '../components/atoms/richtext';
 import SEO from '../components/organisms/seo';
 import Layout from '../components/organisms/layout';
@@ -28,33 +29,33 @@ const PostTemplate = ({ data, pageContext }) => {
         }}
       />
       <StyledPost className=" light spacing-inner">
-        {/* <Fade duration={0.4}> */}
-        <div className="title small">
-          <p className="left">{data.posts.publishedAt}</p>
-          <h2 className="right">{data.posts.title}</h2>
-        </div>
-        <div className="left small">
-          <Richtext blocks={data.posts._rawContent} />
-        </div>
-        <div className="right" />
-        <div className="next">
-          <p className="left" />
-          <div
-            className="right large"
-            onMouseOver={() => setHover(true)}
-            onFocus={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            <Marker
-              active={hover}
-              light
-              text="Next story"
-              style={{ pointerEvents: 'none' }}
-            />
-            <Link to={`/${pageContext.next}`}>Next story</Link>
+        <Fade duration={0.4}>
+          <div className="title small">
+            <p className="left">{data.posts.publishedAt}</p>
+            <h2 className="right">{data.posts.title}</h2>
           </div>
-        </div>
-        {/* </Fade> */}
+          <div className="left small">
+            <Richtext blocks={data.posts._rawContent} />
+          </div>
+          <div className="right" />
+          <div className="next">
+            <p className="left" />
+            <div
+              className="right large"
+              onMouseOver={() => setHover(true)}
+              onFocus={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              <Marker
+                active={hover}
+                light
+                text="Next story"
+                style={{ pointerEvents: 'none' }}
+              />
+              <Link to={`/${pageContext.next}`}>Next story</Link>
+            </div>
+          </div>
+        </Fade>
       </StyledPost>
       <PageTransition active={active} light zIndex={5} />
     </Layout>
