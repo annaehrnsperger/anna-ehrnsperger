@@ -34,6 +34,7 @@ const StyledPreviewImage = styled.figure`
   position: absolute;
   z-index: 2;
   transition: all 0.3s ease-out;
+  transition-delay: 0.05s;
   width: auto;
   top: 15%;
   display: flex;
