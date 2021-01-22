@@ -10,13 +10,13 @@ import Fade from '../atoms/fade';
 
 const Project = ({ title, url, imgSrc, imgAlt }) => {
   const [hover, setHover] = useState(false);
-  const [mouseImagePos, setMouseImagePos] = useState({ x: 0, y: 0 });
+  const [mouseImagePos, setMouseImagePos] = useState({ x: 0, y: 20 });
 
   const moveImageMouse = (e) => {
     const speed = 50;
     setMouseImagePos({
       x: e.pageX / speed,
-      y: e.pageY / (speed * 3),
+      y: e.pageY / (speed * 2),
     });
   };
 

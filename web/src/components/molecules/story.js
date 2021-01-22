@@ -18,7 +18,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
     const speed = 50;
     setMouseImagePos({
       x: e.pageX / speed,
-      y: e.pageY / (speed * 3),
+      y: 0,
     });
   };
 
