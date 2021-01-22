@@ -28,8 +28,11 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   return (
     <TransitionLink
       to={`/${slug}/`}
-      exit={{ length: 0.8 }}
-      entry={{ delay: 0.7 }}
+      exit={{
+        trigger: () => setActive(true),
+        length: 0.8,
+      }}
+      entry={{ delay: 0.8 }}
     >
       <Fade show={inView}>
         <StyledStory
@@ -37,7 +40,6 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           onMouseMove={moveImageMouse}
-          onClick={() => setActive(true)}
         >
           <p className="date small">{date}</p>
           <div className="headline small">

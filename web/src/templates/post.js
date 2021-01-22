@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, graphql, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import Richtext from '../components/atoms/richtext';
 import SEO from '../components/organisms/seo';
 import Layout from '../components/organisms/layout';
@@ -18,15 +19,16 @@ const PostTemplate = ({ data, pageContext }) => {
   return (
     <Layout light="light">
       <SEO />
-      <Nav
-        light
-        onClick={() => {
-          setActive(true);
-          setTimeout(() => {
-            navigate('/');
-          }, 800);
+      <TransitionLink
+        to="/"
+        exit={{
+          trigger: () => setActive(true),
+          length: 0.8,
         }}
-      />
+        entry={{ delay: 0.8 }}
+      >
+        <Nav light />
+      </TransitionLink>
       <StyledPost className=" light spacing-inner">
         <Fade>
           <div className="title small">
