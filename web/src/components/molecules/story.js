@@ -26,7 +26,11 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   const [active, setActive] = useState(false);
 
   return (
-    <TransitionLink to={`/${slug}`} exit={{ length: 1 }} entry={{ delay: 0.6 }}>
+    <TransitionLink
+      to={`/${slug}/`}
+      exit={{ length: 0.8 }}
+      entry={{ delay: 0.7 }}
+    >
       <Fade show={inView}>
         <StyledStory
           ref={ref}

@@ -51,7 +51,7 @@ const PostTemplate = ({ data, pageContext }) => {
                 text="Next story"
                 style={{ pointerEvents: 'none' }}
               />
-              <Link to={`/${pageContext.next}`}>Next story</Link>
+              <Link to={`/${pageContext.next}/`}>Next story</Link>
             </div>
           </div>
         </Fade>
