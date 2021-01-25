@@ -9,7 +9,6 @@ import Marker from '../atoms/marker';
 
 const Footer = ({ light }) => {
   const { ref, inView } = useInView({ threshold: 0.8 });
-  const year = new Date();
 
   const [hover, setHover] = useState(false);
   const [hoverSecond, setHoverSecond] = useState(false);
@@ -18,8 +17,8 @@ const Footer = ({ light }) => {
   return (
     <StyledFooter ref={ref} className={`${light}`}>
       <Fade show={inView}>
-        <p className="date">© {year.getFullYear()}</p>
-        <div className="links">
+        <div className="mail">
+          <p className="date">© 2021 </p>
           <a
             href="mailto:hallo@annaehrnsperger.de"
             style={{ color: light ? 'var(--black)' : 'var(--white)' }}
@@ -27,16 +26,19 @@ const Footer = ({ light }) => {
             onMouseLeave={() => setHover(false)}
             onFocus={() => setHover(true)}
           >
-            Email
+            hallo at annaehrnsperger.de
             <Marker
               active={hover}
               light={light}
-              text="Email"
+              text="hallo at annaehrnsperger.de"
               duration={0.8}
               style={{ pointerEvents: 'none' }}
             />
           </a>
+        </div>
+        <div className="links">
           <a
+            className="instagram"
             href="https://www.instagram.com/annaehrnsperger/"
             target="_blank"
             rel="noopener noreferrer"
@@ -59,11 +61,11 @@ const Footer = ({ light }) => {
             onMouseLeave={() => setHoverThird(false)}
             onFocus={() => setHoverThird(true)}
           >
-            Legal
+            Legal Notice
             <Marker
               active={hoverThird}
               light={light}
-              text="Legal"
+              text="Legal Notice"
               duration={0.8}
               style={{ pointerEvents: 'none' }}
             />
@@ -92,14 +94,22 @@ const StyledFooter = styled.footer`
   div {
     display: flex;
 
-    .date {
-      min-width: 27vw;
+    .mail {
+      white-space: nowrap;
+      width: 100%;
+      .date {
+        padding-right: 10px;
+        display: none;
+      }
     }
 
     .links {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
+      .instagram {
+        display: none;
+      }
     }
   }
 
@@ -108,12 +118,19 @@ const StyledFooter = styled.footer`
       var(--v-spacing-M);
 
     div {
-      .date {
+      .mail {
         width: 70%;
+        .date {
+          display: block;
+        }
       }
 
       .links {
         width: 30%;
+        justify-content: space-between;
+        .instagram {
+          display: block;
+        }
       }
     }
   }
