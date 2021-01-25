@@ -1,6 +1,6 @@
 # Anna Ehrnsperger Design Code
 
-### [www.url.de](https://www.annaehrnsperger.de)
+### [www.annaehrnsperger.de](https://www.annaehrnsperger.de)
 
 - A blazing fast website with [Gatsby.js](https://gatsbyjs.org)
 - Structured content using [Sanity.io](https://www.sanity.io)
