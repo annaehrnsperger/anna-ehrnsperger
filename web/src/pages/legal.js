@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 import SEO from '../components/organisms/seo';
 import Layout from '../components/organisms/layout';
 import Nav from '../components/molecules/nav';
@@ -8,13 +8,16 @@ import Nav from '../components/molecules/nav';
 const LegalPage = () => (
   <Layout>
     <SEO siteTitle="Legal" />
-    <Nav onClick={() => navigate('/')} />
+    <Link to="/">
+      <Nav />
+    </Link>
     <StyledLegalPage className="spacing-inner">
       <p className="large">Legal Notice</p>
       <p className="small">
         Anna Ehrnsperger <br />
+        Nadistr. 131 <br />
         Munich, Germany <br />
-        hallo@annaehrnsperger.de <br />
+        hallo at annaehrnsperger.de <br />
         +49 160 97034615
       </p>
       <p className="small">

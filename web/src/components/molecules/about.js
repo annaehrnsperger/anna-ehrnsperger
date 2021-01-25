@@ -50,7 +50,11 @@ const About = ({ description }) => {
             <Marker active={hoverThird} text="GitHub" duration={0.8} />
           </a>
         </div>
-        <p className="intro">{description}</p>
+        <div className="intro">
+          <p>{description}</p>
+          <br />
+          <p>Available for freelance work.</p>
+        </div>
       </StyledDescription>
     </Fade>
   );
