@@ -1,12 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import S from '@sanity/desk-tool/structure-builder';
-import {
-  FiSettings,
-  FiLayout,
-  FiFile,
-  FiMessageCircle,
-  FiCircle,
-} from 'react-icons/fi';
+import { FiSettings, FiLayout, FiFile, FiMessageCircle } from 'react-icons/fi';
 
 export default () =>
   S.list()
@@ -16,10 +10,6 @@ export default () =>
         .title('Homepage')
         .icon(FiLayout)
         .child(S.editor().schemaType('homepage').documentId('homepage')),
-      S.listItem()
-        .title('Projects')
-        .icon(FiCircle)
-        .child(S.documentTypeList('project').title('Project')),
       S.listItem()
         .title('Blog')
         .icon(FiMessageCircle)
