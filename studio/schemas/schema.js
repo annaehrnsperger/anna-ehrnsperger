@@ -6,7 +6,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import about from './documents/about';
 import blogPost from './documents/blogPost';
 import homepage from './documents/homepage';
-import legalNotice from './documents/legalNotice';
 import project from './documents/project';
 import settings from './documents/settings';
 
@@ -21,7 +20,6 @@ export default createSchema({
     about,
     blogPost,
     homepage,
-    legalNotice,
     project,
     settings,
 
