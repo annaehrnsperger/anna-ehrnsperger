@@ -22,6 +22,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-transition-link`,
-    `gatsby-plugin-preact`,
   ],
 };

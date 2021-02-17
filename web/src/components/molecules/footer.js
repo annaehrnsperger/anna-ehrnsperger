@@ -61,11 +61,11 @@ const Footer = ({ light }) => {
             onMouseLeave={() => setHoverThird(false)}
             onFocus={() => setHoverThird(true)}
           >
-            Legal Notice
+            Disclaimer &<br /> Privacy Policy
             <Marker
               active={hoverThird}
               light={light}
-              text="Legal Notice"
+              text="Disclaimer & Privacy Policy"
               duration={0.8}
               style={{ pointerEvents: 'none' }}
             />
@@ -93,6 +93,7 @@ const StyledFooter = styled.footer`
 
   div {
     display: flex;
+    align-items: flex-end;
 
     .mail {
       white-space: nowrap;
