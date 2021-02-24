@@ -8,7 +8,7 @@ const NotFoundPage = () => (
   <Layout>
     <SEO siteTitle="404" />
     <Nav onClick={() => navigate('/')} />
-    <div className="spacing-inner">
+    <div className="spacing-inner" style={{ minHeight: '100vh' }}>
       <p style={{ paddingTop: 'var(--spacing-XXL)' }}>
         Oh no! This page doesn't exist.
       </p>
