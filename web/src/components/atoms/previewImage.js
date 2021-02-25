@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { motion } from 'framer-motion';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { media } from '../../utils/media-queries';
 
@@ -16,9 +17,9 @@ const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
 
   return (
     <StyledPreviewImage
-      style={{
-        left: randomPos.x,
-        transform: `translate3d(${mouseImagePos.x}px,${mouseImagePos.y}px,0)`,
+      animate={{
+        left: randomPos.x + mouseImagePos.x,
+        top: mouseImagePos.y,
       }}
     >
       {album ? (
@@ -30,10 +31,9 @@ const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
   );
 };
 
-const StyledPreviewImage = styled.figure`
+const StyledPreviewImage = styled(motion.figure)`
   position: absolute;
   z-index: 2;
-  transition: all 0.5s ease;
   width: auto;
   top: 15%;
   display: flex;
