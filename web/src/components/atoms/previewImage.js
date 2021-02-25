@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import { motion } from 'framer-motion';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { media } from '../../utils/media-queries';
+import { ease } from '../../utils/easing';
 
 const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
   const size = useWindowSize();
@@ -21,6 +22,7 @@ const PreviewImage = ({ album, mouseImagePos, imgSrc, imgAlt }) => {
         left: randomPos.x + mouseImagePos.x,
         top: mouseImagePos.y,
       }}
+      transition={{ duration: 0.9, ease: ease.outSmooth }}
     >
       {album ? (
         <img src={imgSrc} alt="Cover" />
