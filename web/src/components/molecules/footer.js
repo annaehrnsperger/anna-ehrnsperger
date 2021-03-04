@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import Fade from '../atoms/fade';
 import { media } from '../../utils/media-queries';
 import Marker from '../atoms/marker';
+import { TLink } from '../atoms/tlink';
 
 const Footer = ({ light }) => {
   const { ref, inView } = useInView({ threshold: 0.8 });
@@ -55,21 +55,22 @@ const Footer = ({ light }) => {
               style={{ pointerEvents: 'none' }}
             />
           </a>
-          <Link
-            to="/legal"
+          <div
             onMouseOver={() => setHoverThird(true)}
             onMouseLeave={() => setHoverThird(false)}
             onFocus={() => setHoverThird(true)}
           >
-            Disclaimer &<br /> Privacy Policy
-            <Marker
-              active={hoverThird}
-              light={light}
-              text="Disclaimer & Privacy Policy"
-              duration={0.8}
-              style={{ pointerEvents: 'none' }}
-            />
-          </Link>
+            <TLink to="/legal">
+              Disclaimer &<br /> Privacy Policy
+              <Marker
+                active={hoverThird}
+                light={light}
+                text="Disclaimer & Privacy Policy"
+                duration={0.8}
+                style={{ pointerEvents: 'none' }}
+              />
+            </TLink>
+          </div>
         </div>
       </Fade>
     </StyledFooter>
