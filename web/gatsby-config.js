@@ -21,6 +21,5 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
       },
     },
-    `gatsby-plugin-transition-link`,
   ],
 };

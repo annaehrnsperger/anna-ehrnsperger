@@ -1,34 +1,22 @@
 import React, { useState } from 'react';
-import { Link, graphql, navigate } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import TransitionLink from 'gatsby-plugin-transition-link';
 import Richtext from '../components/atoms/richtext';
 import SEO from '../components/organisms/seo';
 import Layout from '../components/organisms/layout';
 import Nav from '../components/molecules/nav';
 import Fade from '../components/atoms/fade';
-import PageTransition from '../components/atoms/pageTransition';
 import Marker from '../components/atoms/marker';
 import { media } from '../utils/media-queries';
 
 const PostTemplate = ({ data, pageContext }) => {
-  const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
 
   return (
     <Layout light="light">
       <SEO />
-      <TransitionLink
-        to="/"
-        exit={{
-          trigger: () => setActive(true),
-          length: 0.8,
-        }}
-        entry={{ delay: 0.8 }}
-      >
-        <Nav light />
-      </TransitionLink>
+      <Nav light />
       <StyledPost className=" light spacing-inner">
         <Fade>
           <div className="title small">
@@ -58,7 +46,6 @@ const PostTemplate = ({ data, pageContext }) => {
           </div>
         </Fade>
       </StyledPost>
-      <PageTransition active={active} light zIndex={5} />
     </Layout>
   );
 };

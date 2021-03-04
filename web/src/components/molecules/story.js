@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
-import TransitionLink from 'gatsby-plugin-transition-link';
 import Marker from '../atoms/marker';
 import { media } from '../../utils/media-queries';
 import PreviewImage from '../atoms/previewImage';
 import Fade from '../atoms/fade';
-import PageTransition from '../atoms/pageTransition';
+import { TLink } from '../atoms/tlink';
 
 const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   const [hover, setHover] = useState(false);
@@ -23,17 +22,9 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
   };
 
   const { ref, inView } = useInView({ threshold: 1 });
-  const [active, setActive] = useState(false);
 
   return (
-    <TransitionLink
-      to={`/${slug}/`}
-      exit={{
-        trigger: () => setActive(true),
-        length: 0.8,
-      }}
-      entry={{ delay: 0.8 }}
-    >
+    <TLink to={`/${slug}/`}>
       <Fade show={inView}>
         <StyledStory
           ref={ref}
@@ -55,8 +46,7 @@ const Story = ({ date, title, imgSrc, imgAlt, slug }) => {
           />
         </StyledStory>
       </Fade>
-      <PageTransition active={active} />
-    </TransitionLink>
+    </TLink>
   );
 };
 

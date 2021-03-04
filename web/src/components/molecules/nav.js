@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Marker from '../atoms/marker';
 import { media } from '../../utils/media-queries';
+import { TLink } from '../atoms/tlink';
 
 const Nav = ({ active, light, onClick }) => {
   const [hover, setHover] = useState(false);
@@ -13,20 +14,22 @@ const Nav = ({ active, light, onClick }) => {
     <StyledNav>
       <ul className="small spacing-inner-small">
         <li onClick={onClick} style={{ cursor: 'pointer' }}>
-          <Marker
-            text="Anna Ehrnsperger"
-            duration={1}
-            active={active}
-            light={light}
-          />
-          <br />
-          <Marker
-            text="Design Code"
-            delay={1}
-            active={active}
-            light={light}
-            style={{ transform: 'translateY(-2px)' }}
-          />
+          <TLink to="/">
+            <Marker
+              text="Anna Ehrnsperger"
+              duration={1}
+              active={active}
+              light={light}
+            />
+            <br />
+            <Marker
+              text="Design Code"
+              delay={1}
+              active={active}
+              light={light}
+              style={{ transform: 'translateY(-2px)' }}
+            />
+          </TLink>
         </li>
         <li
           className="contact"
