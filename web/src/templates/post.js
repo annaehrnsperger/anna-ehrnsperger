@@ -118,6 +118,11 @@ const StyledPost = styled.div`
     padding: var(--spacing-XXS) 0;
   }
 
+  .code {
+    font-size: calc(var(--fontsize-2) / 1.3);
+    line-height: 1.5;
+  }
+
   ul {
     li:before {
       padding-right: var(--spacing-S);

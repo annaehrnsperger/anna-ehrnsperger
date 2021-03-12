@@ -2,7 +2,7 @@ import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { getFluidGatsbyImage } from 'gatsby-source-sanity';
 import PropTypes from 'prop-types';
 
@@ -29,8 +29,11 @@ const RichText = ({ blocks }) => {
         <div className="code">
           <SyntaxHighlighter
             language={node.language}
-            style={dark}
-            customStyle={{ background: 'var(--black)' }}
+            style={nord}
+            customStyle={{
+              background: 'var(--black)',
+              padding: 'var(--v-spacing-S)',
+            }}
           >
             {node.code}
           </SyntaxHighlighter>
