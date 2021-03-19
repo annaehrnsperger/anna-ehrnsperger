@@ -1,29 +1,29 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
-import Img from 'gatsby-image';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { getFluidGatsbyImage } from 'gatsby-source-sanity';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
 import PropTypes from 'prop-types';
-
-const sanityConfig = { projectId: 'o1wghi20', dataset: 'production' };
+import { GatsbyImage } from 'gatsby-plugin-image';
+import clientConfig from '../../../client-config';
 
 const RichText = ({ blocks }) => {
   const serializers = {
     types: {
       // eslint-disable-next-line react/display-name
-      mainImage: ({ node }) => (
-        <figure>
-          <Img
-            fluid={getFluidGatsbyImage(
-              node.image.asset._ref,
-              { maxWidth: 3600 },
-              sanityConfig
-            )}
-            alt={node.alt}
-          />
-        </figure>
-      ),
+      mainImage: ({ node }) => {
+        const imageData = getGatsbyImageData(
+          node.image.asset._ref,
+          { maxWidth: 3600 },
+          clientConfig.sanity
+        );
+
+        return (
+          <figure>
+            <GatsbyImage image={imageData} alt={node.alt} />
+          </figure>
+        );
+      },
       // eslint-disable-next-line react/display-name
       code: ({ node }) => (
         <div className="code">
