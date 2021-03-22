@@ -15,7 +15,7 @@ const PostTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout light="light">
-      <SEO />
+      <SEO siteTitle={data.posts.title} />
       <Nav light />
       <StyledPost className=" light spacing-inner">
         <Fade>
